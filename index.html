@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Generator</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'poppins';
+            transition: all ease 0.1s;
+        }
+
+        body {
+            background-color: #8BC6EC;
+background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+
+
+        }
+
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 700px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: rgb(228, 148, 0);
+            text-shadow: 1px 1px 20px rgb(133, 133, 133);
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 8px 25px;
+            font-size: 18px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: none;
+            outline: 0;
+
+        }
+
+
+        button {
+            padding: 12px 35px;
+            border-radius: 15px;
+            border: none;
+            background: orange;
+            filter: drop-shadow(1px 1.5px 2px black);
+            font-size: 15px;
+            transition: all ease 0.09s;
+        }
+
+        button:active {
+            filter: drop-shadow(2px 2px 5px black);
+            background: rgb(221, 144, 0);
+        }
+
+        button:hover {
+            filter: drop-shadow(2px 2px 5px black);
+
+        }
+
+        #Result {
+            width: 400px;
+            height: 100px;
+            padding: 10px 20px;
+            background: #fff;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+
+        }
+
+        #Result:hover,
+        input:hover {
+            box-shadow: 2px 2px 10px black;
+
+        }
+
+        #out {
+            position: absolute;
+            top: 250px;
+            right: 486px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Random Number Generator</h2>
+        <input type="number" placeholder="Starting Value" name="" id="From">
+        <input type="number" name="" placeholder="Ending Value" id="To">
+        <button onclick="randomnumgen()">Generate</button>
+        <p id="out">Output:</p>
+        <p id="Result"></p>
+        <button onclick="copy()">Copy</button>
+
+
+    </div>
+
+
+    <script>
+
+        function randomnumgen() {
+            const from = parseInt(document.getElementById("From").value);
+            const to = parseInt(document.getElementById("To").value);
+
+
+            if (from < to) {
+                let result = Math.floor(Math.random() * ((to - from) + from));
+                document.getElementById("Result").innerHTML = result;
+                result1 = result;
+
+            } else {
+                document.getElementById("Result").innerHTML = "Invalid input. Please enter valid numbers.";
+
+            }
+        }
+
+        let result1;
+        function copy() {
+            if (result1 == "") {
+                navigator.clipboard.writeText(result1)
+                console.log(result1);
+                alert("Result copied to clipboard: ");
+            } else {
+                alert("No result to copy. Generate a random number first.");
+            }
+        }
+
+    </script>
+</body>
+
+</html>
